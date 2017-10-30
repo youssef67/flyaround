@@ -45,9 +45,9 @@ class PlaneModel
     /**
      * @var int
      *
-     * @ORM\Column(name="planelNbSeats", type="smallint")
+     * @ORM\Column(name="planeNbSeats", type="smallint")
      */
-    private $planelNbSeats;
+    private $planeNbSeats;
 
     /**
      * @var bool
@@ -140,27 +140,27 @@ class PlaneModel
     }
 
     /**
-     * Set planelNbSeats
+     * Set planeNbSeats
      *
-     * @param integer $planelNbSeats
+     * @param integer $planeNbSeats
      *
      * @return PlaneModel
      */
-    public function setPlanelNbSeats($planelNbSeats)
+    public function setPlaneNbSeats($planeNbSeats)
     {
-        $this->planelNbSeats = $planelNbSeats;
+        $this->planeNbSeats = $planeNbSeats;
 
         return $this;
     }
 
     /**
-     * Get planelNbSeats
+     * Get planeNbSeats
      *
      * @return int
      */
-    public function getPlanelNbSeats()
+    public function getPlaneNbSeats()
     {
-        return $this->planelNbSeats;
+        return $this->planeNbSeats;
     }
 
     /**
