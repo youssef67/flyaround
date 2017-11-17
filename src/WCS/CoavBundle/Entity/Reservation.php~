@@ -12,16 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Reservation
 {
-
-
-
-    public function __toString()
-    {
-
-        return $this->flight . " " .  $this->publicationDate->format('d/m/Y');
-
-    }
-
     /**
      * @var int
      *
@@ -59,13 +49,23 @@ class Reservation
     private $flight;
 
 
+    /*
+     * custom methods
+     */
+
+    public function __toString()
+    {
+        return $this->passengers;
+    }
+
+
+
     /**
      * @var bool
      *
      * @ORM\Column(name="wasDone", type="boolean")
      */
     private $wasDone;
-
 
 
     /**
