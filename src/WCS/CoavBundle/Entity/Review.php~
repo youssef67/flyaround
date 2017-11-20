@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Review
 {
+
+    public function __toString()
+    {
+        return $this->userRated . " " . $this->reviewAuthor;
+    }
+
     /**
      * @var int
      *

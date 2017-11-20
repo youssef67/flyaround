@@ -34,4 +34,8 @@ wcs_coav:
     resource: "@WCSCoavBundle/Resources/config/routing.yml"
     prefix:   /
 
+wcs_coav_listingcontroller:
+    resource: "@WCSCoavBundle/Controller/ListingControllerController.php"
+    type:     annotation
+
 

@@ -81,6 +81,12 @@ class Flight
     private $wasDone;
 
 
+    public function __toString()
+    {
+        return $this->arrival . " " . $this->departure;
+    }
+
+
     /**
      * Get id
      *

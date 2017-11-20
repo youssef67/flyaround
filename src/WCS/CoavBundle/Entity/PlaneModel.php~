@@ -56,6 +56,10 @@ class PlaneModel
      */
     private $isAvailable;
 
+    public function __toString()
+    {
+           return $this->model;
+    }
 
     /**
      * Get id
