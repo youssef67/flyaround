@@ -38,4 +38,8 @@ wcs_coav_listingcontroller:
     resource: "@WCSCoavBundle/Controller/ListingControllerController.php"
     type:     annotation
 
+wcs_coav_reviewcontroller:
+    resource: "@WCSCoavBundle/Controller/reviewController.php"
+    type:     annotation
+
 
