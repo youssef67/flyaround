@@ -3,6 +3,8 @@
 
 {% block body %}
 
-    <h1>L'emplacement du prochain formulaire</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 
 {% endblock %}

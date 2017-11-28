@@ -21,17 +21,17 @@ class ReviewController extends Controller
     /**
      * List all review entities
      *
-     * @Route("/", name="review")
+     * @Route("/", name="review_index")
      * @Method("GET")
      */
 
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $review = $em->getRepository("WCSCoavBundle:Review")->findAll();
+        $reviews = $em->getRepository("WCSCoavBundle:Review")->findAll();
 
         return $this->render("review/index.html.twig", array(
-           'review'=>$review
+           'reviews'=>$reviews
         ));
     }
 
@@ -44,12 +44,27 @@ class ReviewController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $review = $em->getRepository("WCSCoavBundle:Review")->findAll();
+        $review = new Review();
+        $form = $this->createForm('WCS\CoavBundle\Form\ReviewType', $review);
+        $form->handleRequest($request);
 
-        return $this->render("review/new.html.twig", array(
-            'review'=>$review
+        if($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($review);
+            $em->flush();
+
+            return $this->redirectToRoute('review_index', array('id' => $review->getId()));
+        }
+
+        return $this->render('review/new.html.twig', array(
+           'review' => $review,
+           'form' => $form->createView()
         ));
+
+
     }
+
+
+    
 
 }
