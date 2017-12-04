@@ -5,8 +5,42 @@
     <h1>Review list</h1>
 
 
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Text</th>
+            <th>reviewAuthor</th>
+            <th>userRated</th>
+            <th>publicationdate</th>
+            <th>note</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+            <tr>
+                <td><a href="{{ path('show_review', { 'id': review.id }) }}">{{ review.id }}</a></td>
+                <td>{{ review.text }}</td>
+                <td>{{ review.reviewAuthor }}</td>
+                <td>{{ review.userRated }}</td>
+                <td>{{ review.publicationDate|date('Y-m-d') }}</td>
+                <td>{{ review.note }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('show_review', { 'id': review.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('edit_review', { 'id': review.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    <a href="{{ path('review_new') }}">Create a new review</a>
+    <a href="{{ path('review_new') }}">Create review</a>
 
 
 {% endblock %}

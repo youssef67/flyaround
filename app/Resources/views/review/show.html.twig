@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Review</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ review.id }}</td>
+        </tr>
+        <tr>
+            <th>Texte</th>
+            <td>{{ review.text }}</td>
+        </tr>
+        <tr>
+            <th>Date de publication</th>
+            <td>{{ review.reviewAuthor }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('review_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('delete_review', { 'id': review.id }) }}">delete</a>
+        </li>
+    </ul>
+
+{% endblock %}

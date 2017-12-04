@@ -65,6 +65,64 @@ class ReviewController extends Controller
     }
 
 
-    
+    /**
+     * Find and delete
+     *
+     * @Route("/{id}", name="show_review")
+     * @Method("GET")
+     */
+
+    public function showAction(Review $review)
+    {
+        return $this->render('review/show.html.twig', array(
+            'review' => $review,
+        ));
+
+    }
+
+    /**
+     * edit review
+     *
+     * @Route("/{id}/edit", name="edit_review")
+     * @Method({"GET", "POST"})
+     */
+
+    public function editAction(Request $request, Review $review)
+    {
+
+        $form = $this->createForm('WCS\CoavBundle\Form\ReviewType', $review);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('edit_review');
+        }
+
+        return $this->render('review/edit.html.twig', array(
+            'review' => $review,
+            'edit_form' => $form->createView(),
+        ));
+
+    }
+
+    /**
+     * Delete review
+     *
+     * @Route("/{id}/delete", name="delete_review")
+     * @Method("GET")
+     */
+
+    public function deleteAction(Review $review)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($review);
+        $em->flush();
+
+        return $this->render("review/index.html.twig", array(
+            'reviews'=>$review
+        ));
+
+    }
 
 }
