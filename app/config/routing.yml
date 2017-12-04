@@ -39,7 +39,7 @@ wcs_coav_listingcontroller:
     type:     annotation
 
 wcs_coav_reviewcontroller:
-    resource: "@WCSCoavBundle/Controller/reviewController.php"
+    resource: "@WCSCoavBundle/Controller/ReviewController.php"
     type:     annotation
 
 

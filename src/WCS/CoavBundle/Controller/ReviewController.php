@@ -61,7 +61,6 @@ class ReviewController extends Controller
            'form' => $form->createView()
         ));
 
-
     }
 
 
@@ -96,7 +95,7 @@ class ReviewController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('edit_review');
+            return $this->redirectToRoute('show_review', array('id' => $review->getId()));
         }
 
         return $this->render('review/edit.html.twig', array(
