@@ -19,12 +19,10 @@ security:
                 form_login:
                     provider: fos_userbundle
                     csrf_token_generator: security.csrf.token_manager
-
                 logout:       true
                 anonymous:    true
 
         access_control:
-            - #form_login: ~	+ - { path: ^/$, role: IS_AUTHENTICATED }
             - { path: ^/planemodel, role: IS_AUTHENTICATED }
             - { path: ^/flight, role: IS_AUTHENTICATED }
             - { path: ^/reservation, role: IS_AUTHENTICATED }
