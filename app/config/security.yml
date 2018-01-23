@@ -23,11 +23,11 @@ security:
                 anonymous:    true
 
         access_control:
-            - { path: ^/planemodel, role: IS_AUTHENTICATED }
-            - { path: ^/flight, role: IS_AUTHENTICATED }
-            - { path: ^/reservation, role: IS_AUTHENTICATED }
-            - { path: ^/terrain, role: IS_AUTHENTICATED }
-            - { path: ^/review, role: IS_AUTHENTICATED }
+            - { path: ^/planemodel, role: ROLE_USER }
+            - { path: ^/flight, role: ROLE_USER }
+            - { path: ^/reservation, role: ROLE_USER }
+            - { path: ^/terrain, role: ROLE_USER }
+            - { path: ^/review, role: ROLE_USER }
             - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }

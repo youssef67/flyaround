@@ -3,6 +3,8 @@
 namespace WCS\CoavBundle\Controller;
 
 use WCS\CoavBundle\Entity\Flight;
+use WCS\CoavBundle\Entity\PlaneModel;
+use WCS\CoavBundle\Service\FlightInfos;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -64,12 +66,29 @@ class FlightController extends Controller
      * @Route("/{id}", name="flight_show")
      * @Method("GET")
      */
-    public function showAction(Flight $flight)
+    public function showAction(Flight $flight, FlightInfos $flightInfos, PlaneModel $planeModel)
     {
+
+        $distance = $flightInfos->getDistance(
+          $flight->getDeparture()->getLatitude(),
+          $flight->getDeparture()->getLongitude(),
+          $flight->getArrival()->getLatitude(),
+          $flight->getArrival()->getLongitude()
+        );
+
+
+
+        $timeTravel = $flightInfos->getTimeTravel(
+            $planeModel->getCruiseSpeed(),
+            $distance
+        );
+
         $deleteForm = $this->createDeleteForm($flight);
 
         return $this->render('flight/show.html.twig', array(
             'flight' => $flight,
+            'distance' => $distance,
+            'time' => $timeTravel,
             'delete_form' => $deleteForm->createView(),
         ));
     }
